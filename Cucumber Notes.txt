@@ -1,0 +1,16 @@
+Cucumber--> BDD
+Feature file
+runner file
+step defnition
+
+Cucumber keywords:
+
+Feature
+Background
+Scenario
+Scenario Outline and example
+Given
+When
+then
+and
+but

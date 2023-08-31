@@ -1,6 +1,6 @@
 package stepdef;
 
-import java.sql.Driver;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,8 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -16,10 +18,10 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.And;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class WindowsSteps {
+public class Steps {
 	WebDriver driver;
-	
-	@Given("Launch a chrome Browser")
+
+	@Given("Launch an chrome Browser")
 	public void launchBrowser()
 	{
 		WebDriverManager.chromedriver().setup();
@@ -28,7 +30,7 @@ public class WindowsSteps {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 	
-	@When("Load the url {String}")
+	@When("Load the url {string}")
 	public void navigatetoLeafGround(String url)
 	{
 		driver.get(url);
@@ -45,7 +47,6 @@ public class WindowsSteps {
 	public void clickonWindoeButton()
 	{
 		driver.findElement(By.xpath("//span[text()='Window']")).click();
-		String currentWindow = driver.getWindowHandle();
 		driver.findElement(By.xpath("//h5[text()='Click and Confirm new Window Opens']/following-sibling::button"))
 				.click();
 	}
@@ -70,6 +71,35 @@ public class WindowsSteps {
 		
 		
 	}
+	
+	
+	@And("Click on the wait page in Main Menu")
+	public void navigatetoWaitsPage()
+	{
+		driver.findElement(By.xpath("//span[text()='Element']/ancestor::a")).click();
+		driver.findElement(By.xpath("//span[text()='Waits']")).click();
+	}
+	
+	@And("Click on the button")
+	public void clickonButton()
+	{
+		driver.findElement(By.xpath("//h5[contains(text(),'Wait for Visibility')]/following::button[1]")).click();
+		
+	}
+	@Then("Confirm the element is visible")
+	public void confirmElementisVisible()
+	{
+WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(text(),'I am here')]")));
+
+		if (driver.findElement(By.xpath("//*[contains(text(),'I am here')]")).isDisplayed())
+			System.out.println("element is Visible");
+		else
+			System.out.println("element is Not Visible");
+		driver.quit();
+	}
+	
 	
 
 }

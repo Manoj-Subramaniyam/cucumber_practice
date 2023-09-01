@@ -101,5 +101,24 @@ WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 	
 	
-
+	@When("Click on the Text page in Main Menu")
+	public void clickonTextButton()
+	{
+		driver.findElement(By.xpath("//span[text()='Element']/ancestor::a")).click();
+		driver.findElement(By.xpath("//span[text()='Text Box']")).click();
+	}
+	
+	@And("Enter the Values {string} and {string}")
+	public void entertheValues(String name,String country)
+	{
+	driver.findElement(By.xpath("//h5[text()='Type your name']/following::input")).sendKeys(name);
+	driver.findElement(By.xpath("//h5[contains(text(),'Append Country')]/following::input")).sendKeys(country);
+	}
+	
+	@Then("Verify the values are entered")
+	public void verify()
+	{
+		System.out.println( driver.findElement(By.xpath("//h5[text()='Append Country to this City.']/following::input[1]")).getAttribute("value"));
+		driver.quit();
+	}
 }

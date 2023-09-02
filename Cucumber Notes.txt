@@ -14,3 +14,28 @@ When
 then
 and
 but
+
+Step Definition file
+
+Give the tag names 
+@Given()
+method
+@When()
+method
+
+runner file:
+@CucumberOptions(
+features = {"need to pass entire path starting after project"}
+glue={"only package name is enough"}
+monochrome=true
+dryRun=false
+)
+extends AbstractTestNGCucumberTests
+
+How to pass a value from feature to step definition
+
+Feature:
+Given enter the "name"
+
+Step Definition
+Given("enter the {string}")

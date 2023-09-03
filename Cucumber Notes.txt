@@ -14,7 +14,7 @@ When
 then
 and
 but
-
+------------------------------------
 Step Definition file
 
 Give the tag names 
@@ -52,3 +52,14 @@ Examples:
 |colunm name|column name|
 |value1|value2|
 |value1|value2|
+
+----------------------------------
+tags:
+
+Runner:
+tags="@sanity"
+tags="@sanity or @smoke"
+tags="@sanity and not @smoke"
+feature:
+Above the scenario we need to give @smoke, @sanity
+----------------------------------

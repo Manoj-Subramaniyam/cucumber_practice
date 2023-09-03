@@ -39,3 +39,16 @@ Given enter the "name"
 
 Step Definition
 Given("enter the {string}")
+
+--------------------------------
+Feature:
+Background:
+	What are the steps that we are wrting here will be executed across all the sceanrios
+
+Scenario Outline:
+	will follow with examples
+Examples:
+
+|colunm name|column name|
+|value1|value2|
+|value1|value2|

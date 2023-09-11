@@ -29,6 +29,7 @@ features = {"need to pass entire path starting after project"}
 glue={"only package name is enough"}
 monochrome=true
 dryRun=false
+publish=true(will publish the report in cloud)
 )
 extends AbstractTestNGCucumberTests
 
@@ -63,3 +64,16 @@ tags="@sanity and not @smoke"
 feature:
 Above the scenario we need to give @smoke, @sanity
 ----------------------------------
+
+Hooks
+
+Scenario level:
+	runs for every scenario befor and after
+ 
+@Before
+@after
+
+step level:
+	Will run for every step in 
+@BeforeStep
+@AfterStep
